@@ -14,6 +14,7 @@ public class DialogueSystem : MonoBehaviour
     private Label _syntexText;
 
     private StringBuilder _syntexBuilder;
+    private Coroutine _textCo;
 
     private bool isTexting;
 
@@ -32,12 +33,19 @@ public class DialogueSystem : MonoBehaviour
 
     public void SetText(string name, string syntex)
     {
+        if(isTexting)
+        {
+            StopCoroutine(_textCo);
+            isTexting = false;
+            return;
+        }
         _nameText.text = name;
-        StartCoroutine(TextRendering(syntex));
+        _textCo = StartCoroutine(TextRendering(syntex));
     }
 
     IEnumerator TextRendering(string text)
     {
+        isTexting = true;
         _syntexBuilder = new StringBuilder();
         _syntexText.text = "";
         for (int i = 0; i < text.Length; i++)
@@ -46,5 +54,6 @@ public class DialogueSystem : MonoBehaviour
             _syntexText.text = _syntexBuilder.ToString();
             yield return new WaitForSeconds(_textTurm);
         }
+        isTexting = false;
     }
 }
