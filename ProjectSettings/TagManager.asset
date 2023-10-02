@@ -41,3 +41,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: BackGround
+    uniqueID: 3169999019
+    locked: 0
+  - name: Heroine
+    uniqueID: 1756182015
+    locked: 0
+  - name: UI
+    uniqueID: 4255787037
+    locked: 0

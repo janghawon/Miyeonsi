@@ -1,0 +1,29 @@
+#text-panel {
+    width: 90%;
+    height: 40%;
+    bottom: 50px;
+    background-color: rgba(0, 0, 0, 0.67);
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+#name-text {
+    font-size: 60px;
+    color: rgba(255, 255, 255, 255);
+    -unity-font-definition: initial;
+    -unity-font: url('project://database/Assets/Font/SUITE-ttf/SUITE-Regular.ttf?fileID=12800000&guid=21935fdf24a6ac74b866a4e33a727b03&type=3#SUITE-Regular');
+}
+
+#syntex-text {
+    height: 60%;
+    font-size: 40px;
+    padding-left: 10px;
+    color: rgba(255, 255, 255, 255);
+    -unity-font-definition: url('project://database/Assets/Font/SUITE-ttf/SUITE-Regular%20SDF.asset?fileID=11400000&guid=d3b09ec31d6b6d449ade0fdc57c516d7&type=2#SUITE-Regular SDF');
+}
