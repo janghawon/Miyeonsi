@@ -764,6 +764,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canNext: 0
+  _chapterData: []
   _phaseCount: 0
   _phaseOrderCount: 0
 --- !u!4 &1859522404

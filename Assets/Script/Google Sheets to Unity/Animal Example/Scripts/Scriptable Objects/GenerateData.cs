@@ -21,12 +21,16 @@ public class SendData
     public BlackPanelActiveType bpat;
     public bool isFadeIn;
     public bool isFadeOut;
+    public bool isActiveCharacter;
+    public bool isCharacterShake;
+    public int isBlush;
 
     public SendData(List<string> datas)
     {
         name = datas[0];
         sentence = datas[1];
 
+        #region 지옥의 트라이 캐치
         try
         {
             emotion = (Emotion)Enum.Parse(typeof(Emotion), datas[2]);
@@ -69,6 +73,31 @@ public class SendData
         {
             isFadeOut = false;
         }
+        try
+        {
+            isActiveCharacter = Convert.ToBoolean(Convert.ToInt16(datas[7]));
+        }
+        catch
+        {
+            isActiveCharacter = true;
+        }
+        try
+        {
+            isCharacterShake = Convert.ToBoolean(Convert.ToInt16(datas[8]));
+        }
+        catch
+        {
+            isCharacterShake = false;
+        }
+        try
+        {
+            isBlush = Convert.ToInt16(datas[9]);
+        }
+        catch
+        {
+            isBlush = -1;
+        }
+        #endregion
     }
 }
 
@@ -83,10 +112,12 @@ public class GenerateData : ScriptableObject
     public void UpdateStats(List<GSTU_Cell> list, string name)
     {
         List<string> datas = new List<string>();
-        for(int i = 1; i < 8; i++)
+        for(int i = 1; i < 11; i++)
         {
+            Debug.Log(i);
             datas.Add(list[i].value);
         }
+        Debug.Log("----------");
         SendData sendData = new SendData(datas);
         DataList.Add(sendData);
     }
@@ -121,7 +152,8 @@ public class DataEditor : Editor
 
     void UpdateMethodOne(GstuSpreadSheet ss)
     {
-        //for(int i = 0; i < MAXSYNTEXID; i++)
+        //data.ID.Clear();
+        //for (int i = 0; i < 3; i++)
         //{
         //    data.ID.Add(i.ToString());
         //}
