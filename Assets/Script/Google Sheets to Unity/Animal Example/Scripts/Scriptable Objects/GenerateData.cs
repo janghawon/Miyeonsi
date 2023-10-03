@@ -13,7 +13,6 @@ using UnityEditor;
 [System.Serializable]
 public class SendData
 {
-    private string ID;
     public string name;
     public string sentence;
     public Emotion emotion;
@@ -23,13 +22,57 @@ public class SendData
     public bool isFadeIn;
     public bool isFadeOut;
 
-    SendData(string _id, string _name, string _sen, string _emo, string _clo,
-             string _bg, string _bpat)
+    public SendData(List<string> datas)
     {
+        name = datas[0];
+        sentence = datas[1];
 
+        try
+        {
+            emotion = (Emotion)Enum.Parse(typeof(Emotion), datas[2]);
+        }
+        catch
+        {
+            emotion = Emotion.same;
+        }
+        try
+        {
+            clothes = (Clothes)Enum.Parse(typeof(Clothes), datas[3]);
+        }
+        catch
+        {
+            clothes = Clothes.same;
+        }
+        try
+        {
+            backGround = (BackGround)Enum.Parse(typeof(BackGround), datas[4]);
+        }
+        catch
+        {
+            backGround = BackGround.same;
+        }
+        try
+        {
+            bpat = (BlackPanelActiveType)Enum.Parse(typeof(BlackPanelActiveType), datas[5]);
+            isFadeIn = true;
+        }
+        catch
+        {
+            bpat = BlackPanelActiveType.notuse;
+            isFadeIn = false;
+        }
+        try
+        {
+            isFadeOut = Convert.ToBoolean(Convert.ToInt16(datas[6]));
+        }
+        catch
+        {
+            isFadeOut = false;
+        }
     }
 }
 
+[CreateAssetMenu(menuName = "SO/ChapterData")]
 public class GenerateData : ScriptableObject
 {
     public string associatedSheet = "";
@@ -39,10 +82,13 @@ public class GenerateData : ScriptableObject
     public List<SendData> DataList = new List<SendData>();
     public void UpdateStats(List<GSTU_Cell> list, string name)
     {
-        for (int i = 0; i < list.Count; i++)
+        List<string> datas = new List<string>();
+        for(int i = 1; i < 8; i++)
         {
-            Debug.Log(list[i].value);
+            datas.Add(list[i].value);
         }
+        SendData sendData = new SendData(datas);
+        DataList.Add(sendData);
     }
 }
 
@@ -75,6 +121,11 @@ public class DataEditor : Editor
 
     void UpdateMethodOne(GstuSpreadSheet ss)
     {
+        //for(int i = 0; i < MAXSYNTEXID; i++)
+        //{
+        //    data.ID.Add(i.ToString());
+        //}
+
         foreach (string dataName in data.ID)
             data.UpdateStats(ss.rows[dataName], dataName);
         EditorUtility.SetDirty(target);

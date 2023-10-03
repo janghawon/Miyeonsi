@@ -10,6 +10,8 @@ public class PhaseManager : MonoBehaviour
     private BackGroundSystem _bgSystem;
     private CharacterSystem _characterSystem;
 
+    [SerializeField] private GenerateData[] _chaterData;
+
     private void Awake()
     {
         if (Instance != null)

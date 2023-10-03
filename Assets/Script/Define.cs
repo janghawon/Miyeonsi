@@ -2,7 +2,8 @@ public enum Emotion
 {
     frown,
     curious,
-    smile
+    smile,
+    same
 }
 
 public enum Clothes
@@ -10,7 +11,8 @@ public enum Clothes
     casual,
     gym,
     maid,
-    summer
+    summer,
+    same
 }
 
 public enum BackGround
@@ -28,7 +30,8 @@ public enum BackGround
     jien_3,
     jiHen_1,
     jiHen_2,
-    jiHen_3
+    jiHen_3,
+    same
 }
 
 public enum BlackPanelActiveType
@@ -37,5 +40,6 @@ public enum BlackPanelActiveType
     up_down_bounce,
     right,
     right_left,
-    none
+    none,
+    notuse
 }

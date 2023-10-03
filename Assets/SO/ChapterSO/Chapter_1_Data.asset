@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 26b098d2f15d8d544a3b286d97986e20, type: 3}
-  m_Name: TestData
+  m_Name: Chapter_1_Data
   m_EditorClassIdentifier: 
   associatedSheet: 1RePORRhHtM3_z3C8fsgnRHpGxkSGScAV6Oe1maT00F0
   associatedWorksheet: Chapter1
-  Names:
+  ID:
   - 0
   - 1
   DataList: []
