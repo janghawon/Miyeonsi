@@ -9,13 +9,35 @@ using GoogleSheetsToUnity.ThirdPary;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
+
+[System.Serializable]
+public class SendData
+{
+    private string ID;
+    public string name;
+    public string sentence;
+    public Emotion emotion;
+    public Clothes clothes;
+    public BackGround backGround;
+    public BlackPanelActiveType bpat;
+    public bool isFadeIn;
+    public bool isFadeOut;
+
+    SendData(string _id, string _name, string _sen, string _emo, string _clo,
+             string _bg, string _bpat)
+    {
+
+    }
+}
+
 public class GenerateData : ScriptableObject
 {
     public string associatedSheet = "";
     public string associatedWorksheet = "";
 
-    public List<string> Names = new List<string>();
-    internal void UpdateStats(List<GSTU_Cell> list, string name)
+    public List<string> ID = new List<string>();
+    public List<SendData> DataList = new List<SendData>();
+    public void UpdateStats(List<GSTU_Cell> list, string name)
     {
         for (int i = 0; i < list.Count; i++)
         {
@@ -53,10 +75,8 @@ public class DataEditor : Editor
 
     void UpdateMethodOne(GstuSpreadSheet ss)
     {
-        //data.UpdateStats(ss.rows["Jim"]);
-        foreach (string dataName in data.Names)
+        foreach (string dataName in data.ID)
             data.UpdateStats(ss.rows[dataName], dataName);
         EditorUtility.SetDirty(target);
     }
-    
 }
