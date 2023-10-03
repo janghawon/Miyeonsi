@@ -401,9 +401,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: e71d485868849ce49bb2948ee7380ac1, type: 3}
   _blackPanel: {fileID: 1780511785}
   _activeTime: 1
-  _waitTime: 1
-  _bPanelRWaitPos: {x: 0, y: 0}
-  _bPanelUpWaitPos: {x: 0, y: 0}
+  _bPanelRWaitPos: {x: 18, y: 0}
+  _bPanelUpWaitPos: {x: 10, y: 0}
+  _bPanelLEndPos: {x: -18, y: 0}
 --- !u!1 &1072665545
 GameObject:
   m_ObjectHideFlags: 0
@@ -587,6 +587,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _textTurm: 0
+  canClick: 0
 --- !u!114 &1701150088
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -762,6 +763,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 762eedf920d2fa24e82ada425ceb9a9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canNext: 0
+  _phaseCount: 0
+  _phaseOrderCount: 0
 --- !u!4 &1859522404
 Transform:
   m_ObjectHideFlags: 0

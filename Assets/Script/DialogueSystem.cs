@@ -18,6 +18,8 @@ public class DialogueSystem : MonoBehaviour
 
     private bool isTexting;
 
+    public bool canClick;
+
     private void Awake()
     {
         _uiDoc = GetComponent<UIDocument>();
@@ -29,6 +31,14 @@ public class DialogueSystem : MonoBehaviour
         _panel = _root.Q<VisualElement>("text-panel");
         _nameText = _root.Q<Label>("name-text");
         _syntexText = _root.Q<Label>("syntex-text");
+
+        _panel.RegisterCallback<ClickEvent>(NextOrder);
+    }
+
+    public void NextOrder(ClickEvent evt)
+    {
+        if (!canClick) return;
+        PhaseManager.Instance.NextOrder();
     }
 
     public void SetText(string name, string syntex)

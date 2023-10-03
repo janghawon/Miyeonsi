@@ -4,7 +4,35 @@ using UnityEngine;
 
 public class PhaseManager : MonoBehaviour
 {
-    private int _phaseCount;
-    private int _phaseOrderCount;
+    public static PhaseManager Instance;
+    public bool canNext;
 
+    private BackGroundSystem _bgSystem;
+    private CharacterSystem _characterSystem;
+
+    private void Awake()
+    {
+        if (Instance != null)
+        {
+            Debug.LogError("?!?!");
+            return;
+        }
+        Instance = this;
+        _bgSystem = GameObject.Find("BackGroundManager").GetComponent<BackGroundSystem>();
+        _characterSystem = GameObject.Find("CharacterManager").GetComponent<CharacterSystem>();
+    }
+
+    [SerializeField] private int _phaseCount = 0;
+    [SerializeField] private int _phaseOrderCount = 0;
+
+
+    public void NextOrder()
+    {
+        if (!canNext) return;
+    }
+
+    public void NextPhase()
+    {
+
+    }
 }
