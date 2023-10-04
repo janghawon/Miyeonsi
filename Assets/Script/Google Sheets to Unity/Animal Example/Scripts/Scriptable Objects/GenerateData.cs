@@ -114,10 +114,8 @@ public class GenerateData : ScriptableObject
         List<string> datas = new List<string>();
         for(int i = 1; i < 11; i++)
         {
-            Debug.Log(i);
             datas.Add(list[i].value);
         }
-        Debug.Log("----------");
         SendData sendData = new SendData(datas);
         DataList.Add(sendData);
     }

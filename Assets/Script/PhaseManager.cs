@@ -16,9 +16,12 @@ public class PhaseManager : MonoBehaviour
     private GenerateData _selectData;
     private bool _isBlushSave;
 
-    private Emotion _saveEmo;
+    [SerializeField] private Emotion _saveEmo;
     private Clothes _saveCloth;
     private BackGround _saveBg;
+
+    [SerializeField] private int _phaseCount = 0;
+    [SerializeField] private int _phaseOrderCount = 0;
 
     private void Awake()
     {
@@ -39,9 +42,6 @@ public class PhaseManager : MonoBehaviour
         NextOrder();
     }
 
-    [SerializeField] private int _phaseCount = 0;
-    [SerializeField] private int _phaseOrderCount = 0;
-
     public void NextOrder()
     {
         if (!canNext) return;
@@ -51,12 +51,20 @@ public class PhaseManager : MonoBehaviour
         if (sd.isBlush != -1 && Convert.ToBoolean(sd.isBlush) != _isBlushSave)
             _isBlushSave = Convert.ToBoolean(sd.isBlush);
 
-        if (_saveEmo != Emotion.same)
+        if (sd.emotion != Emotion.same)
+        {
             _saveEmo = sd.emotion;
-        if (_saveCloth != Clothes.same)
+        }
+            
+        if (sd.clothes != Clothes.same)
+        {
             _saveCloth = sd.clothes;
-        if (_saveBg != BackGround.same)
+        }
+            
+        if (sd.backGround != BackGround.same)
+        {
             _saveBg = sd.backGround;
+        }
 
         _characterSystem.CharacterSet(_saveCloth, _saveEmo, _isBlushSave);
         _bgSystem.SetBackGround(_saveBg);
@@ -69,7 +77,6 @@ public class PhaseManager : MonoBehaviour
         if (sd.isCharacterShake)
             _characterSystem.ShakeCharacter();
         
-
         _phaseOrderCount++;
     }
 

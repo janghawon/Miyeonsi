@@ -73,9 +73,9 @@ public class BackGroundSystem : MonoBehaviour
                 break;
             case BlackPanelActiveType.right:
                 {
-                    _blackPanleTrm.position = _bPanelUpWaitPos;
+                    _blackPanleTrm.position = _bPanelRWaitPos;
                     _blackPanel.enabled = true;
-                    _blackPanleTrm.DOMoveY(0, _activeTime);
+                    _blackPanleTrm.DOMoveX(0, _activeTime);
                     yield return new WaitForSeconds(_activeTime);
                     PhaseManager.Instance.NextOrder();
                     
@@ -83,9 +83,9 @@ public class BackGroundSystem : MonoBehaviour
                 break;
             case BlackPanelActiveType.right_left:
                 {
-                    _blackPanleTrm.position = _bPanelUpWaitPos;
+                    _blackPanleTrm.position = _bPanelRWaitPos;
                     _blackPanel.enabled = true;
-                    _blackPanleTrm.DOMoveY(0, _activeTime);
+                    _blackPanleTrm.DOMoveX(0, _activeTime);
                     yield return new WaitForSeconds(_activeTime);
                     PhaseManager.Instance.NextOrder();
                     
@@ -102,6 +102,7 @@ public class BackGroundSystem : MonoBehaviour
                 }
                 break;
         }
+        PhaseManager.Instance.canNext = true;
     }
 
     IEnumerator BlackPanelRemoveCo()

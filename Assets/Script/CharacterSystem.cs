@@ -25,7 +25,7 @@ public class CharacterSystem : MonoBehaviour
 
     public void ShakeCharacter()
     {
-        _heroineObj.transform.DOShakePosition(1, 10, 5);
+        _heroineObj.transform.DOShakePosition(1, 2, 5);
     }
 
     public void ActiveCharacter(bool isActive)

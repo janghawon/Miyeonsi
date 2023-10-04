@@ -38,7 +38,7 @@ public class DialogueSystem : MonoBehaviour
     public void NextOrder(ClickEvent evt)
     {
         if (!canClick) return;
-        PhaseManager.Instance.NextOrder();
+            PhaseManager.Instance.NextOrder();
     }
 
     public void SetText(string name, string syntex)
