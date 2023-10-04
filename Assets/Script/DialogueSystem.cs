@@ -19,6 +19,7 @@ public class DialogueSystem : MonoBehaviour
     private bool isTexting;
 
     public bool canClick;
+    private string _saveSyntex;
 
     private void Awake()
     {
@@ -38,17 +39,19 @@ public class DialogueSystem : MonoBehaviour
     public void NextOrder(ClickEvent evt)
     {
         if (!canClick) return;
-            PhaseManager.Instance.NextOrder();
+        if (isTexting)
+        {
+            StopCoroutine(_textCo);
+            _syntexText.text = _saveSyntex;
+            isTexting = false;
+            return;
+        }
+        PhaseManager.Instance.NextOrder();
     }
 
     public void SetText(string name, string syntex)
     {
-        if(isTexting)
-        {
-            StopCoroutine(_textCo);
-            isTexting = false;
-            return;
-        }
+        _saveSyntex = syntex;
         _nameText.text = name;
         _textCo = StartCoroutine(TextRendering(syntex));
     }

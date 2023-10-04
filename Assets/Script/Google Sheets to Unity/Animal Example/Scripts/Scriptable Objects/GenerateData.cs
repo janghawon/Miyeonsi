@@ -150,11 +150,11 @@ public class DataEditor : Editor
 
     void UpdateMethodOne(GstuSpreadSheet ss)
     {
-        //data.ID.Clear();
-        //for (int i = 0; i < 3; i++)
-        //{
-        //    data.ID.Add(i.ToString());
-        //}
+        data.ID.Clear();
+        for (int i = 0; i < 99; i++)
+        {
+            data.ID.Add(i.ToString());
+        }
 
         foreach (string dataName in data.ID)
             data.UpdateStats(ss.rows[dataName], dataName);

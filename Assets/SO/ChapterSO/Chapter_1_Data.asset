@@ -14,8 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   associatedSheet: 1RePORRhHtM3_z3C8fsgnRHpGxkSGScAV6Oe1maT00F0
   associatedWorksheet: Chapter1
-  ID:
-  - 0
-  - 1
-  - 2
+  ID: []
   DataList: []
