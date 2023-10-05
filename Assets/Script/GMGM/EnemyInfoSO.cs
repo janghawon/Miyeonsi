@@ -8,4 +8,5 @@ public class EnemyInfoSO : ScriptableObject
     public float enemyHP;
     public float enemyAtk;
     public float enemyAtkCool;
+    public float enemySpeed;
 }

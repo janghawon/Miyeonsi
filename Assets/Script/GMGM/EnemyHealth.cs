@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum EnemyState
+public enum EnemyStateEnum
 {
     chase,
     attack,
@@ -13,26 +13,26 @@ public enum EnemyState
 public class EnemyHealth : MonoBehaviour
 {
     [SerializeField] private Transform _target;
-    [SerializeField] private EnemyState _currentState;
+    public EnemyStateEnum currentState;
     [SerializeField] private EnemyInfoSO _enemyInfo;
 
-    private EnemyAttack _enemyAttack;
-    private EnemyChase _enemyChase;
-    private EnemyDie _enemyDie;
-
+    private EnemyState[] _states = new EnemyState[3];
     private float _enemyHP;
 
     private void Awake()
     {
-        _enemyAttack = GetComponent<EnemyAttack>();
-        _enemyChase = GetComponent<EnemyChase>();
-        _enemyDie = GetComponent<EnemyDie>();
     }
 
     private void Start()
     {
-        _currentState = EnemyState.chase;
+        currentState = EnemyStateEnum.chase;
     }
 
+    private void Update()
+    {
+        switch(currentState)
+        {
 
+        }
+    }
 }
